@@ -39,9 +39,7 @@ body {
     overflow-x: hidden;
 }
 
-/* =========================
-   EFECTO VHS
-========================= */
+/* EFECTO VHS */
 
 body::before {
     content: "";
@@ -72,9 +70,7 @@ body::after {
     );
 }
 
-/* =========================
-   NAVEGACIÓN
-========================= */
+/* NAVEGACIÓN */
 
 nav {
     position: fixed;
@@ -127,9 +123,7 @@ nav {
     cursor: pointer;
 }
 
-/* =========================
-   HERO / EL FIN
-========================= */
+/* HERO */
 
 .hero {
     min-height: 100vh;
@@ -223,9 +217,7 @@ nav {
     letter-spacing: 3px;
 }
 
-/* =========================
-   CONTENIDO
-========================= */
+/* CONTENIDO */
 
 .container {
     width: min(1100px, 90%);
@@ -250,9 +242,7 @@ section {
     letter-spacing: -2px;
 }
 
-/* =========================
-   NOTICIAS
-========================= */
+/* NOTICIAS */
 
 .news-grid {
     display: grid;
@@ -306,9 +296,7 @@ section {
     color: var(--green) !important;
 }
 
-/* =========================
-   VHS
-========================= */
+/* VHS */
 
 .vhs-content {
     background: #0b0b0b;
@@ -323,9 +311,7 @@ section {
     color: white;
 }
 
-/* =========================
-   CALIFICACIÓN
-========================= */
+/* CALIFICACIÓN */
 
 .rating {
     text-align: center;
@@ -384,9 +370,7 @@ section {
     cursor: pointer;
 }
 
-/* =========================
-   REDES
-========================= */
+/* REDES */
 
 .socials {
     display: flex;
@@ -420,9 +404,7 @@ section {
     cursor: not-allowed;
 }
 
-/* =========================
-   FOOTER
-========================= */
+/* FOOTER */
 
 footer {
     text-align: center;
@@ -432,9 +414,7 @@ footer {
     font-size: 12px;
 }
 
-/* =========================
-   MENSAJE BIENVENIDA
-========================= */
+/* MENSAJE */
 
 .message-button {
     position: fixed;
@@ -493,9 +473,7 @@ footer {
     line-height: 1.8;
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
+/* RESPONSIVE */
 
 @media(max-width: 800px) {
 
@@ -560,10 +538,6 @@ footer {
 
 <body>
 
-<!-- =========================
-     NAVEGACIÓN
-========================= -->
-
 <nav>
 
     <div class="logo">
@@ -593,10 +567,6 @@ footer {
 </nav>
 
 
-<!-- =========================
-     EL FIN
-========================= -->
-
 <header class="hero">
 
     <div class="hero-content">
@@ -608,6 +578,8 @@ footer {
         <h1 class="end-title">
             EL FIN
         </h1>
+
+        <!-- CAMBIADO A JUEVES 23 -->
 
         <p class="end-date">
             Jueves · 23 / 07 / 2026 · 17:45 HRS
@@ -646,10 +618,6 @@ footer {
 </header>
 
 
-<!-- =========================
-     CENTRO DE NOTICIAS
-========================= -->
-
 <section>
 
 <div class="container">
@@ -687,7 +655,6 @@ footer {
 
         </div>
 
-
         <div class="news-card disabled">
 
             <div class="news-icon">
@@ -707,7 +674,6 @@ footer {
             </div>
 
         </div>
-
 
         <div class="news-card disabled">
 
@@ -735,10 +701,6 @@ footer {
 
 </section>
 
-
-<!-- =========================
-     SECCIÓN VHS
-========================= -->
 
 <section id="vhs">
 
@@ -804,7 +766,9 @@ footer {
         class="section-label"
         style="margin-top:80px;"
     >
+
         INFORMACIÓN
+
     </div>
 
 
@@ -833,10 +797,6 @@ footer {
 </section>
 
 
-<!-- =========================
-     CONTACTO
-========================= -->
-
 <section>
 
 <div
@@ -860,10 +820,6 @@ footer {
 
 </section>
 
-
-<!-- =========================
-     CALIFICACIÓN
-========================= -->
 
 <section>
 
@@ -912,10 +868,6 @@ footer {
 
 </section>
 
-
-<!-- =========================
-     REDES SOCIALES
-========================= -->
 
 <section>
 
@@ -971,10 +923,6 @@ footer {
 </section>
 
 
-<!-- =========================
-     FOOTER
-========================= -->
-
 <footer>
 
     Groblox016 · Archivo Oficial
@@ -987,10 +935,6 @@ footer {
 </footer>
 
 
-<!-- =========================
-     BOTÓN DE MENSAJE
-========================= -->
-
 <button
     class="message-button"
     id="messageButton"
@@ -999,10 +943,6 @@ footer {
     💬
 </button>
 
-
-<!-- =========================
-     MENSAJE DE BIENVENIDA
-========================= -->
 
 <div
     class="welcome"
@@ -1053,13 +993,19 @@ footer {
    JUEVES 23/07/2026
    17:45 HORA DE CHILE
 
-   Se utiliza la zona horaria de Santiago
-   para calcular correctamente la hora local.
+   CAMBIO REALIZADO:
+   Se usa la fecha UTC equivalente
+   para evitar problemas de zona horaria.
 ===================================== */
 
-const targetDate = new Date(
-    "2026-07-23T17:45:00-04:00"
-).getTime();
+const targetDate = Date.UTC(
+    2026,
+    6,
+    23,
+    21,
+    45,
+    0
+);
 
 
 function updateCountdown() {
@@ -1073,12 +1019,13 @@ function updateCountdown() {
 
     if (distance <= 0) {
 
-        document.getElementById("days").innerText = "00";
-        document.getElementById("hours").innerText = "00";
-        document.getElementById("minutes").innerText = "00";
-        document.getElementById("seconds").innerText = "00";
+        document.getElementById("days").textContent = "00";
+        document.getElementById("hours").textContent = "00";
+        document.getElementById("minutes").textContent = "00";
+        document.getElementById("seconds").textContent = "00";
 
         return;
+
     }
 
 
@@ -1115,16 +1062,16 @@ function updateCountdown() {
 
     /* MOSTRAR RESULTADOS */
 
-    document.getElementById("days").innerText =
+    document.getElementById("days").textContent =
         String(days).padStart(2, "0");
 
-    document.getElementById("hours").innerText =
+    document.getElementById("hours").textContent =
         String(hours).padStart(2, "0");
 
-    document.getElementById("minutes").innerText =
+    document.getElementById("minutes").textContent =
         String(minutes).padStart(2, "0");
 
-    document.getElementById("seconds").innerText =
+    document.getElementById("seconds").textContent =
         String(seconds).padStart(2, "0");
 
 }
@@ -1189,4 +1136,92 @@ function sendReview() {
         ).value.trim();
 
 
-  
+    if (selectedRating === 0) {
+
+        alert(
+            "Selecciona una calificación antes de enviar."
+        );
+
+        return;
+
+    }
+
+
+    if (comment === "") {
+
+        alert(
+            "Escribe una recomendación antes de enviar."
+        );
+
+        return;
+
+    }
+
+
+    alert(
+        "¡Gracias por tu opinión! ⭐"
+    );
+
+
+    document.getElementById(
+        "comment"
+    ).value = "";
+
+}
+
+
+/* =====================================
+   MENSAJE DE BIENVENIDA
+===================================== */
+
+function openWelcome() {
+
+    const welcome =
+        document.getElementById(
+            "welcome"
+        );
+
+    const button =
+        document.getElementById(
+            "messageButton"
+        );
+
+
+    if (
+        welcome.style.display === "block"
+    ) {
+
+        welcome.style.display = "none";
+
+        button.classList.remove(
+            "stop"
+        );
+
+    } else {
+
+        welcome.style.display = "block";
+
+        button.classList.add(
+            "stop"
+        );
+
+    }
+
+}
+
+
+/* =====================================
+   CERRAR MENSAJE AL HACER CLICK FUERA
+===================================== */
+
+document.addEventListener(
+    "click",
+    function(event) {
+
+        const welcome =
+            document.getElementById(
+                "welcome"
+            );
+
+        const button =
+            document.getElementBy
