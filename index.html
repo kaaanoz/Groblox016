@@ -5,21 +5,24 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Groblox016 | Archivo Oficial</title>
 
 <style>
 
-/* ==============================
-   GENERAL
-============================== */
+/* =====================================
+   BASE
+===================================== */
 
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -31,20 +34,23 @@ body {
 
 section {
     padding: 90px 20px;
-    border-bottom: 1px solid #171717;
+    border-bottom: 1px solid #151515;
 }
 
 .container {
-    max-width: 1000px;
+    width: 100%;
+    max-width: 1050px;
     margin: auto;
 }
 
-/* ==============================
-   NAVEGACIÓN
-============================== */
+
+/* =====================================
+   NAV
+===================================== */
 
 nav {
     height: 70px;
+
     padding: 0 30px;
 
     display: flex;
@@ -52,48 +58,61 @@ nav {
     justify-content: space-between;
 
     background: #080808;
+
     border-bottom: 1px solid #1c1c1c;
 
     position: sticky;
     top: 0;
-    z-index: 100;
+
+    z-index: 1000;
 }
 
 .logo {
+    font-size: 18px;
     font-weight: bold;
     letter-spacing: 3px;
-    font-size: 18px;
 }
 
 .logo span {
-    opacity: .45;
+    color: #666;
 }
 
 .nav-right {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 18px;
 }
 
 .status {
-    color: #4cff78;
-    font-size: 10px;
+    color: #50ff7a;
+
+    font-size: 9px;
     letter-spacing: 2px;
 }
 
 .language {
-    background: #101010;
+    background: #0d0d0d;
+
     color: #aaa;
-    border: 1px solid #222;
+
+    border: 1px solid #252525;
+
     padding: 6px 8px;
+
+    outline: none;
+
+    cursor: pointer;
 }
 
-/* ==============================
-   HERO / BIENVENIDA
-============================== */
+
+/* =====================================
+   HERO
+===================================== */
 
 .hero {
-    min-height: 75vh;
+    min-height: 78vh;
+
+    position: relative;
 
     display: flex;
     align-items: center;
@@ -101,78 +120,117 @@ nav {
 
     text-align: center;
 
-    position: relative;
-
     background:
         radial-gradient(
             circle at center,
             #151515 0%,
-            #080808 45%,
+            #080808 42%,
             #030303 100%
         );
 }
 
+.hero::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 3px,
+            rgba(255,255,255,.015) 4px
+        );
+
+    pointer-events: none;
+}
+
 .hero-content {
     max-width: 850px;
+
     padding: 30px;
+
+    position: relative;
+
+    z-index: 2;
 }
 
 .eyebrow {
-    font-size: 10px;
-    letter-spacing: 4px;
-    color: #666;
     margin-bottom: 25px;
+
+    color: #555;
+
+    font-size: 10px;
+
+    letter-spacing: 4px;
 }
 
 .welcome-title {
-    font-size: clamp(30px, 6vw, 65px);
-    letter-spacing: 3px;
     margin-bottom: 25px;
+
+    font-size: clamp(32px, 7vw, 70px);
+
+    letter-spacing: 3px;
+
+    font-weight: 700;
 }
 
 .welcome-text {
-    max-width: 700px;
+    max-width: 720px;
+
     margin: auto;
 
-    color: #999;
-    font-size: 15px;
+    color: #8b8b8b;
+
+    font-size: 14px;
+
     letter-spacing: .5px;
 }
 
 .scroll {
     position: absolute;
+
     bottom: 25px;
 
-    font-size: 9px;
-    letter-spacing: 3px;
     color: #444;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
 }
 
-/* ==============================
+
+/* =====================================
    SECCIONES
-============================== */
+===================================== */
 
 .section-label {
+    margin-bottom: 15px;
+
     color: #555;
 
     font-size: 10px;
-    letter-spacing: 4px;
 
-    margin-bottom: 15px;
+    letter-spacing: 4px;
 }
 
 .section-title {
-    font-size: 32px;
-    letter-spacing: 1px;
     margin-bottom: 40px;
+
+    font-size: 32px;
+
+    letter-spacing: 1px;
 }
 
-/* ==============================
-   NOTICIAS
-============================== */
+
+/* =====================================
+   CENTRO DE NOTICIAS
+===================================== */
 
 .news-grid {
     display: grid;
+
     grid-template-columns:
         repeat(auto-fit, minmax(250px, 1fr));
 
@@ -180,31 +238,35 @@ nav {
 }
 
 .news-card {
-    background: #0b0b0b;
+    min-height: 95px;
 
-    border: 1px solid #1d1d1d;
-
-    padding: 25px;
+    padding: 22px;
 
     display: flex;
     align-items: center;
 
-    gap: 20px;
+    gap: 18px;
 
-    transition: .2s;
+    background: #0b0b0b;
+
+    border: 1px solid #1d1d1d;
+
+    transition:
+        border-color .2s,
+        transform .2s,
+        background .2s;
 }
 
-.news-card:not(.disabled) {
+.news-card.clickable {
     cursor: pointer;
 }
 
-.news-card:not(.disabled):hover {
-    border-color: #333;
-    transform: translateY(-2px);
-}
+.news-card.clickable:hover {
+    border-color: #363636;
 
-.news-card.disabled {
-    opacity: .45;
+    background: #0e0e0e;
+
+    transform: translateY(-2px);
 }
 
 .news-icon {
@@ -212,221 +274,264 @@ nav {
 }
 
 .news-card h3 {
-    font-size: 15px;
-    margin-bottom: 5px;
+    margin-bottom: 4px;
+
+    font-size: 14px;
+
+    font-weight: 600;
 }
 
 .news-card p {
     color: #666;
-    font-size: 12px;
+
+    font-size: 11px;
+}
+
+.news-card.disabled {
+    opacity: .4;
 }
 
 .available {
     color: #4cff78 !important;
 }
 
-/* ==============================
-   VIDEO PANEL
-============================== */
 
-.video-panel {
-    background: #090909;
-    border: 1px solid #1c1c1c;
-    margin-top: 25px;
-}
+/* =====================================
+   CÍRCULOS DE ESTADO
+===================================== */
 
-.video-header {
-    padding: 22px 25px;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    cursor: pointer;
-
-    transition: .2s;
-}
-
-.video-header:hover {
-    background: #0d0d0d;
-}
-
-.video-header-left {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.video-arrow {
-    color: #666;
-    font-size: 13px;
-
-    transition: transform .25s;
-}
-
-.video-panel.open .video-arrow {
-    transform: rotate(90deg);
-}
-
-.video-header h3 {
-    font-size: 14px;
-    letter-spacing: 1px;
-}
-
-.video-status {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-
-    font-size: 9px;
-    letter-spacing: 2px;
-    color: #777;
-}
-
-/* círculos */
-
-.status-dot {
+.status-circle {
     width: 9px;
     height: 9px;
 
+    flex-shrink: 0;
+
     border-radius: 50%;
 
-    display: inline-block;
+    margin-left: auto;
 }
 
-.status-green {
-    background: #35e86b;
+.green {
+    background: #42ef6d;
+
     box-shadow:
-        0 0 7px rgba(53, 232, 107, .5);
+        0 0 8px rgba(66,239,109,.45);
 }
 
-.status-yellow {
-    background: #e6d83b;
+.yellow {
+    background: #e4d93c;
+
     box-shadow:
-        0 0 7px rgba(230, 216, 59, .4);
+        0 0 8px rgba(228,217,60,.35);
 }
 
-/* contenido desplegable */
 
-.video-content {
-    max-height: 0;
-    overflow: hidden;
+/* =====================================
+   PANEL DE VIDEOS
+===================================== */
 
-    transition:
-        max-height .4s ease,
-        padding .3s ease;
+.video-panel {
+    margin-top: 15px;
 
-    border-top: 0 solid #181818;
+    display: none;
+
+    background: #090909;
+
+    border: 1px solid #1d1d1d;
+
+    animation: openPanel .25s ease;
 }
 
-.video-panel.open .video-content {
-    max-height: 1000px;
-    padding: 25px;
+.video-panel.show {
+    display: block;
+}
 
-    border-top: 1px solid #181818;
+@keyframes openPanel {
+
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+.video-panel-header {
+    padding: 18px 22px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 1px solid #181818;
+}
+
+.video-panel-header h3 {
+    font-size: 11px;
+
+    color: #777;
+
+    letter-spacing: 2px;
+}
+
+.close-videos {
+    color: #555;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    border: none;
+
+    background: transparent;
+}
+
+.close-videos:hover {
+    color: white;
 }
 
 .video-description {
-    color: #999;
-    font-size: 14px;
+    padding: 28px;
 
-    margin-bottom: 25px;
+    color: #858585;
+
+    font-size: 13px;
 }
 
-/* lista de videos */
+.video-description strong {
+    color: #bdbdbd;
+}
+
+
+/* =====================================
+   LISTA DE VIDEOS
+===================================== */
 
 .video-list {
+    padding: 0 28px 28px;
+
     display: flex;
+
     flex-direction: column;
+
     gap: 10px;
 }
 
 .video-item {
     padding: 17px;
 
-    background: #0d0d0d;
-    border: 1px solid #191919;
-
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
-    gap: 15px;
-}
+    gap: 20px;
 
-.video-info {
-    display: flex;
-    align-items: center;
-    gap: 13px;
-}
+    background: #0d0d0d;
 
-.video-icon {
-    font-size: 18px;
+    border: 1px solid #191919;
 }
 
 .video-name {
-    font-size: 13px;
-    color: #bbb;
+    color: #aaa;
+
+    font-size: 12px;
 }
 
-.video-state {
-    font-size: 8px;
-    letter-spacing: 2px;
+.video-status {
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
     white-space: nowrap;
+
+    font-size: 8px;
+
+    letter-spacing: 1.5px;
 }
 
-.video-state.available {
+.video-status.available {
     color: #4cff78 !important;
 }
 
-.video-state.soon {
-    color: #e6d83b !important;
+.video-status.soon {
+    color: #e4d93c !important;
 }
 
-/* ==============================
+.small-dot {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+}
+
+.video-status.available .small-dot {
+    background: #42ef6d;
+}
+
+.video-status.soon .small-dot {
+    background: #e4d93c;
+}
+
+
+/* =====================================
    VHS
-============================== */
+===================================== */
 
 .vhs-content {
     max-width: 850px;
 
-    color: #888;
+    color: #858585;
 
     font-size: 14px;
 }
 
 .vhs-content strong {
-    color: #bbb;
+    color: #bdbdbd;
 }
 
-/* ==============================
+
+/* =====================================
    CONTACTO
-============================== */
+===================================== */
+
+.contact-section {
+    text-align: center;
+}
 
 .contact-email {
     display: inline-block;
 
     margin-top: 20px;
 
-    color: #aaa;
+    padding-bottom: 5px;
 
-    text-decoration: none;
+    color: #aaa;
 
     border-bottom: 1px solid #333;
 
-    padding-bottom: 4px;
+    text-decoration: none;
 
     transition: .2s;
 }
 
 .contact-email:hover {
     color: white;
+
     border-color: white;
 }
 
-/* ==============================
-   RATING
-============================== */
+
+/* =====================================
+   CALIFICACIÓN
+===================================== */
 
 .rating {
     text-align: center;
@@ -436,72 +541,90 @@ nav {
     margin: 25px 0;
 
     display: flex;
+
     justify-content: center;
 
     gap: 8px;
 }
 
 .star {
-    font-size: 30px;
-
     color: #222;
+
+    font-size: 30px;
 
     cursor: pointer;
 
-    transition: .2s;
+    transition: .15s;
 }
 
-.star:hover,
+.star:hover {
+    color: #777;
+}
+
 .star.active {
     color: #ddd;
 }
 
 .review-box {
-    display: none;
+    width: 100%;
 
     max-width: 500px;
 
     margin: auto;
+
+    display: none;
 }
 
 .review-box textarea {
     width: 100%;
+
     min-height: 110px;
+
+    padding: 15px;
 
     resize: vertical;
 
     background: #090909;
+
     color: white;
 
     border: 1px solid #222;
 
-    padding: 15px;
-
     outline: none;
+
+    font-family: inherit;
 }
 
 .review-box button {
     margin-top: 10px;
 
-    background: #eee;
-    color: #050505;
+    padding: 12px 18px;
 
     border: none;
 
-    padding: 12px 18px;
+    background: #eee;
+
+    color: #050505;
 
     cursor: pointer;
 
     font-size: 10px;
+
     letter-spacing: 1px;
 }
 
-/* ==============================
+.review-box button:hover {
+    background: white;
+}
+
+
+/* =====================================
    REDES
-============================== */
+===================================== */
 
 .socials {
     display: flex;
+
     justify-content: center;
 
     gap: 12px;
@@ -514,6 +637,7 @@ nav {
     height: 45px;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
@@ -527,17 +651,21 @@ nav {
 }
 
 .social:hover {
-    border-color: #555;
     color: white;
+
+    border-color: #555;
 }
 
 .social.disabled {
-    opacity: .35;
+    opacity: .3;
+
+    cursor: default;
 }
 
-/* ==============================
+
+/* =====================================
    FOOTER
-============================== */
+===================================== */
 
 footer {
     padding: 45px 20px;
@@ -547,12 +675,14 @@ footer {
     color: #444;
 
     font-size: 10px;
+
     letter-spacing: 2px;
 }
 
-/* ==============================
+
+/* =====================================
    BOTÓN MENSAJE
-============================== */
+===================================== */
 
 .message-button {
     position: fixed;
@@ -568,11 +698,12 @@ footer {
     border: 1px solid #333;
 
     background: #101010;
+
     color: white;
 
     cursor: pointer;
 
-    z-index: 200;
+    z-index: 2000;
 
     transition: .2s;
 }
@@ -581,9 +712,11 @@ footer {
     background: #181818;
 }
 
-.welcome {
-    display: none;
+.message-button.stop {
+    border-color: #555;
+}
 
+.welcome {
     position: fixed;
 
     right: 25px;
@@ -591,23 +724,49 @@ footer {
 
     width: min(340px, calc(100vw - 40px));
 
+    padding: 25px;
+
+    display: none;
+
     background: #0b0b0b;
 
     border: 1px solid #252525;
 
-    padding: 25px;
+    box-shadow:
+        0 10px 40px rgba(0,0,0,.55);
 
-    z-index: 199;
+    z-index: 1999;
+}
 
-    box-shadow: 0 10px 40px rgba(0,0,0,.5);
+.welcome.show {
+    display: block;
+
+    animation: welcomeIn .2s ease;
+}
+
+@keyframes welcomeIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
 }
 
 .welcome h3 {
     margin-bottom: 15px;
+
+    font-size: 15px;
 }
 
 .welcome p {
     color: #777;
+
     font-size: 12px;
 }
 
@@ -615,9 +774,10 @@ footer {
     color: #bbb;
 }
 
-/* ==============================
+
+/* =====================================
    MÓVIL
-============================== */
+===================================== */
 
 @media (max-width: 600px) {
 
@@ -629,18 +789,48 @@ footer {
         padding: 70px 18px;
     }
 
+    .hero {
+        min-height: 72vh;
+    }
+
     .welcome-title {
         font-size: 34px;
     }
 
+    .welcome-text {
+        font-size: 13px;
+    }
+
     .video-item {
         align-items: flex-start;
+
+        flex-direction: column;
     }
 
     .video-status {
-        font-size: 7px;
+        margin-left: 0;
     }
 
+    .video-list,
+    .video-description {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+}
+
+
+/* =====================================
+   ACCESIBILIDAD
+===================================== */
+
+button,
+select {
+    font-family: inherit;
+}
+
+a {
+    -webkit-tap-highlight-color: transparent;
 }
 
 </style>
@@ -651,9 +841,9 @@ footer {
 <body>
 
 
-<!-- ==============================
-     NAV
-============================== -->
+<!-- =====================================
+     NAVEGACIÓN
+===================================== -->
 
 <nav>
 
@@ -667,7 +857,11 @@ footer {
             ONLINE
         </div>
 
-        <select class="language" id="language">
+        <select
+            class="language"
+            id="language"
+            aria-label="Idioma"
+        >
 
             <option value="es">
                 ES
@@ -684,9 +878,9 @@ footer {
 </nav>
 
 
-<!-- ==============================
-     BIENVENIDA
-============================== -->
+<!-- =====================================
+     HERO
+===================================== -->
 
 <header class="hero">
 
@@ -701,13 +895,8 @@ footer {
         </h1>
 
         <p class="welcome-text">
-            ⚠️ La web esta siendo actualizada, por lo cual
-           En cualquier momento puede cerrarse y volver al
-           Estado de Mantenimiento, pronto se aproxima una 
-           seccion donde podremos responder y observar todas 
-           sus consultas, La pagina web
-           NO esta en un estado completamente estable/seguro 
-           Por lo tanto, todavia estamos combinando codigos.
+            AQUÍ ENCONTRARÁS INFORMACIÓN MÁS DETALLADA
+            Y ANUNCIOS DE GROBLOX016.
         </p>
 
     </div>
@@ -719,16 +908,409 @@ footer {
 </header>
 
 
-<!-- ==============================
+<!-- =====================================
      CENTRO DE NOTICIAS
-============================== -->
+===================================== -->
 
 <section>
 
 <div class="container">
 
     <div class="section-label">
-      🔴 NO DISPONIBLE 🔴
-            <div
-            
-                    
+        INFORMACIÓN
+    </div>
+
+    <h2 class="section-title">
+        Centro de Noticias
+    </h2>
+
+
+    <div class="news-grid">
+
+
+        <!-- =================================
+             CATEGORÍA VIDEOS
+        ================================== -->
+
+        <div
+            class="news-card clickable"
+            id="videosButton"
+            role="button"
+            tabindex="0"
+            aria-expanded="false"
+        >
+
+            <div class="news-icon">
+                📼
+            </div>
+
+            <div>
+
+                <h3>
+                    Sección VHS
+                </h3>
+
+                <p class="available">
+                    ● Disponible
+                </p>
+
+            </div>
+
+            <span
+                class="status-circle green"
+                title="Disponible"
+            ></span>
+
+        </div>
+
+
+        <!-- =================================
+             PRÓXIMAMENTE
+        ================================== -->
+
+        <div class="news-card disabled">
+
+            <div class="news-icon">
+                ❔
+            </div>
+
+            <div>
+
+                <h3>
+                    Próximamente
+                </h3>
+
+                <p>
+                    No disponible.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="news-card disabled">
+
+            <div class="news-icon">
+                ❔
+            </div>
+
+            <div>
+
+                <h3>
+                    Próximamente
+                </h3>
+
+                <p>
+                    No disponible.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================
+         PANEL OCULTO DE VIDEOS
+    ====================================== -->
+
+    <div
+        class="video-panel"
+        id="videoPanel"
+    >
+
+        <div class="video-panel-header">
+
+            <h3>
+                ARCHIVO · INFORMACIÓN VHS
+            </h3>
+
+            <button
+                class="close-videos"
+                id="closeVideos"
+                aria-label="Cerrar sección VHS"
+            >
+                ✕
+            </button>
+
+        </div>
+
+
+        <!-- TEXTO ORIGINAL -->
+
+        <div class="video-description">
+
+            <p>
+                La sección VHS, son videos grabados en Roblox,
+                videojuego <strong>"Unseen Liminality"</strong>,
+                con entidades de la película Backrooms,
+                entidades como <strong>"Cap'n Clark"</strong>
+                y <strong>"Still Life"</strong>.
+            </p>
+
+            <br>
+
+            <p>
+                La idea de esta serie de videos comenzó tras el
+                lanzamiento de la película Backrooms,
+                y la vuelta de la comunidad a las redes sociales.
+            </p>
+
+            <br>
+
+            <p>
+                Esta serie comenzó el
+                <strong>MARTES, 23 DE JUNIO, 2026</strong>.
+                Con el primer VHS titulado como
+                <strong>"house.footage.1987.mp4"</strong>.
+            </p>
+
+            <br>
+
+            <p>
+                Aunque toda esta serie de videos está inspirada
+                en los VHS de <strong>Kane Pixels</strong>
+                y toda su gran e inspiradora serie de videos VHS
+                de las oficinas amarillas.
+            </p>
+
+            <br>
+
+            <p>
+                Actualmente se está trabajando en los vídeos
+                ya que se encuentran en recta final de estos
+                vídeos en el <strong>Canal de Groblox016</strong>.
+            </p>
+
+        </div>
+
+
+        <!-- =================================
+             VIDEOS
+        ================================== -->
+
+        <div class="video-list">
+
+
+            <!-- DISPONIBLE -->
+
+            <div class="video-item">
+
+                <div class="video-name">
+                    JUGUÉ LA ACTUALIZACIÓN
+                    DE UNSEEN LIMINALITY
+                </div>
+
+                <div class="video-status available">
+
+                    <span class="small-dot"></span>
+
+                    DISPONIBLE
+
+                </div>
+
+            </div>
+
+
+            <!-- PRÓXIMAMENTE -->
+
+            <div class="video-item">
+
+                <div class="video-name">
+                    JUGUÉ LA VERSION ANTIGUA
+                    DE UNSEEN LIMINALITY
+                </div>
+
+                <div class="video-status soon">
+
+                    <span class="small-dot"></span>
+
+                    PRÓXIMAMENTE
+
+                </div>
+
+            </div>
+
+
+            <!-- PRÓXIMAMENTE SIN TÍTULO -->
+
+            <div class="video-item">
+
+                <div class="video-name">
+                    VHS de la NUEVA ACTUALIZACIÓN
+                    de Unseen Liminality.
+                </div>
+
+                <div class="video-status soon">
+
+                    <span class="small-dot"></span>
+
+                    PRÓXIMAMENTE
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================
+     VHS / INFORMACIÓN
+===================================== -->
+
+<section id="vhs">
+
+<div class="container">
+
+    <div class="section-label">
+        ARCHIVO · 001
+    </div>
+
+    <h2 class="section-title">
+        Sección VHS
+    </h2>
+
+    <div class="vhs-content">
+
+        <p>
+            La sección VHS, son videos grabados en Roblox,
+            videojuego <strong>"Unseen Liminality"</strong>,
+            con entidades de la película Backrooms,
+            entidades como <strong>"Cap'n Clark"</strong>
+            y <strong>"Still Life"</strong>.
+        </p>
+
+        <br>
+
+        <p>
+            La idea de esta serie de videos comenzó tras el
+            lanzamiento de la película Backrooms,
+            y la vuelta de la comunidad a las redes sociales.
+        </p>
+
+        <br>
+
+        <p>
+            Esta serie comenzó el
+            <strong>MARTES, 23 DE JUNIO, 2026</strong>.
+            Con el primer VHS titulado como
+            <strong>"house.footage.1987.mp4"</strong>.
+        </p>
+
+        <br>
+
+        <p>
+            Aunque toda esta serie de videos está inspirada
+            en los VHS de <strong>Kane Pixels</strong>
+            y toda su gran e inspiradora serie de videos VHS
+            de las oficinas amarillas.
+        </p>
+
+        <br>
+
+        <p>
+            Actualmente se está trabajando en los vídeos
+            ya que se encuentran en recta final de estos
+            vídeos en el <strong>Canal de Groblox016</strong>.
+        </p>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================
+     CONTACTO
+===================================== -->
+
+<section class="contact-section">
+
+<div class="container">
+
+    <div class="section-label">
+        CONTACTO
+    </div>
+
+    <h2 class="section-title">
+        CORREO DE CONTACTO OFICIAL
+    </h2>
+
+    <p style="color:#666;">
+        Disponible para consultas, recomendaciones
+        y asuntos relacionados con Groblox016.
+    </p>
+
+    <a
+        class="contact-email"
+        href="mailto:lucastrcontact@gmail.com"
+    >
+        lucastrcontact@gmail.com
+    </a>
+
+</div>
+
+</section>
+
+
+<!-- =====================================
+     CALIFICACIÓN
+===================================== -->
+
+<section>
+
+<div class="container rating">
+
+    <div class="section-label">
+        TU OPINIÓN
+    </div>
+
+    <h2 class="section-title">
+        CALIFICA LA WEB
+    </h2>
+
+    <p style="color:#777;">
+        Tu opinión ayuda a mejorar este proyecto.
+    </p>
+
+
+    <div class="stars">
+
+        <span
+            class="star"
+            data-star="1"
+        >
+            ★
+        </span>
+
+        <span
+            class="star"
+            data-star="2"
+        >
+            ★
+        </span>
+
+        <span
+            class="star"
+            data-star="3"
+        >
+            ★
+        </span>
+
+        <span
+            class="star"
+            data-star="4"
+        >
+            ★
+        </span>
+
+       
