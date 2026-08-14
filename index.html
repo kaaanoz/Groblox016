@@ -9,9 +9,9 @@
 <style>
 
 /* =========================================================
-   GROBLOX016 — V4
-   ESTILO BASADO EN V1
-========================================================= */
+   GROBLOX016 · V4.2
+   BASE VISUAL: V1
+   ========================================================= */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
@@ -21,10 +21,16 @@
     --card2: #111111;
     --text: #f5f5f5;
     --muted: #858585;
+    --muted2: #555;
     --line: rgba(255,255,255,0.09);
+
     --red: #ff2020;
     --red2: #b40000;
+
     --green: #36ff88;
+    --yellow: #ffd000;
+
+    --danger: #ff3030;
 }
 
 * {
@@ -40,13 +46,13 @@ html {
 body {
     background: var(--bg);
     color: var(--text);
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter', Arial, sans-serif;
     overflow-x: hidden;
 }
 
 /* =========================================================
-   EFECTO VHS
-========================================================= */
+   VHS OVERLAY
+   ========================================================= */
 
 body::before {
     content: "";
@@ -82,13 +88,16 @@ body::after {
 
 /* =========================================================
    NAVEGACIÓN
-========================================================= */
+   ========================================================= */
 
 nav {
     position: fixed;
     top: 0;
+    left: 0;
+
     width: 100%;
     height: 70px;
+
     z-index: 1000;
 
     display: flex;
@@ -137,7 +146,6 @@ nav {
     border: 1px solid var(--line);
 
     padding: 8px 12px;
-
     border-radius: 8px;
 
     cursor: pointer;
@@ -145,7 +153,7 @@ nav {
 
 /* =========================================================
    HERO
-========================================================= */
+   ========================================================= */
 
 .hero {
     min-height: 100vh;
@@ -169,7 +177,6 @@ nav {
     color: var(--muted);
 
     font-size: 12px;
-
     letter-spacing: 5px;
 
     margin-bottom: 20px;
@@ -192,13 +199,12 @@ nav {
         0 0 20px rgba(255,0,0,0.35),
         0 0 70px rgba(255,0,0,0.15);
 
-    animation:
-        pulse 3s infinite ease-in-out;
+    animation: pulse 3s infinite ease-in-out;
 }
 
 @keyframes pulse {
 
-    0%,100% {
+    0%, 100% {
         opacity: 1;
         transform: scale(1);
     }
@@ -210,14 +216,19 @@ nav {
 
 }
 
-.hero-subtitle {
+.hero-description {
     margin-top: 30px;
 
     color: var(--muted);
 
     font-size: 14px;
 
-    letter-spacing: 2px;
+    max-width: 600px;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    line-height: 1.8;
 }
 
 .scroll {
@@ -233,8 +244,8 @@ nav {
 }
 
 /* =========================================================
-   GENERAL
-========================================================= */
+   CONTENEDOR
+   ========================================================= */
 
 .container {
     width: min(1100px, 90%);
@@ -267,7 +278,7 @@ section {
 
 /* =========================================================
    CENTRO DE NOTICIAS
-========================================================= */
+   ========================================================= */
 
 .news-grid {
     display: grid;
@@ -290,20 +301,45 @@ section {
             var(--card)
         );
 
-    border:
-        1px solid var(--line);
+    border: 1px solid var(--line);
 
     border-radius: 20px;
 
     display: flex;
-
     flex-direction: column;
 
     justify-content: space-between;
 
-    transition: 0.3s;
+    transition:
+        transform .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
 
     cursor: pointer;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.news-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -100%;
+
+    width: 100%;
+    height: 1px;
+
+    background: var(--red);
+
+    transition: left .4s ease;
+}
+
+.news-card:hover::before {
+    left: 0;
 }
 
 .news-card:hover {
@@ -311,18 +347,24 @@ section {
 
     border-color:
         rgba(255,0,0,0.35);
+
+    box-shadow:
+        0 15px 50px
+        rgba(0,0,0,.35);
 }
 
 .news-card.disabled {
     cursor: not-allowed;
 
-    opacity: 0.45;
+    opacity: .42;
 }
 
 .news-card.disabled:hover {
     transform: none;
 
     border-color: var(--line);
+
+    box-shadow: none;
 }
 
 .news-icon {
@@ -333,6 +375,8 @@ section {
 
 .news-card h3 {
     font-size: 22px;
+
+    margin-bottom: 8px;
 }
 
 .news-card p {
@@ -348,27 +392,128 @@ section {
 }
 
 /* =========================================================
-   VHS
-========================================================= */
+   VHS · ARCHIVO
+   ========================================================= */
 
-.vhs-section {
-    display: none;
+.vhs-wrapper {
+    background: #080808;
 
-    margin-top: 30px;
+    border:
+        1px solid
+        rgba(255,0,0,.13);
+
+    border-radius: 24px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 25px 80px
+        rgba(0,0,0,.35);
 }
 
-.vhs-section.open {
+.vhs-header {
+    padding: 30px;
+
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #111,
+            #080808
+        );
+
+    border-bottom:
+        1px solid
+        var(--line);
+
+    cursor: pointer;
+}
+
+.vhs-header:hover {
+    background:
+        linear-gradient(
+            145deg,
+            #151515,
+            #090909
+        );
+}
+
+.vhs-header-left {
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+}
+
+.vhs-header-icon {
+    font-size: 45px;
+}
+
+.vhs-header h3 {
+    font-size: 22px;
+
+    margin-bottom: 5px;
+}
+
+.vhs-status {
+    color: var(--green);
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    font-weight: 700;
+}
+
+.vhs-arrow {
+    font-size: 24px;
+
+    color: var(--muted);
+
+    transition: transform .3s ease;
+}
+
+.vhs-wrapper.open .vhs-arrow {
+    transform: rotate(180deg);
+}
+
+.vhs-content {
+    display: none;
+
+    padding:
+        clamp(25px,5vw,60px);
+
+    line-height: 1.9;
+
+    color: #c5c5c5;
+
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(255,0,0,.045),
+            transparent 35%
+        );
+}
+
+.vhs-wrapper.open .vhs-content {
     display: block;
 
     animation:
-        vhsOpen 0.35s ease;
+        openVhs .35s ease;
 }
 
-@keyframes vhsOpen {
+@keyframes openVhs {
 
     from {
         opacity: 0;
-        transform: translateY(-15px);
+        transform: translateY(-8px);
     }
 
     to {
@@ -378,85 +523,75 @@ section {
 
 }
 
-.vhs-content {
-    background: #0b0b0b;
-
-    border:
-        1px solid var(--line);
-
-    padding:
-        clamp(25px, 5vw, 60px);
-
-    border-radius: 24px;
-
-    line-height: 1.9;
-
-    color: #c5c5c5;
-}
-
 .vhs-content strong {
     color: white;
 }
 
-.vhs-top {
-    display: flex;
+.vhs-content p {
+    margin-bottom: 20px;
+}
 
-    justify-content: space-between;
+.vhs-file {
+    margin-top: 35px;
 
-    align-items: flex-start;
+    padding: 25px;
 
-    gap: 20px;
+    border:
+        1px solid
+        rgba(255,255,255,.07);
 
-    margin-bottom: 35px;
+    background: #050505;
+
+    border-radius: 14px;
+}
+
+.vhs-file-title {
+    color: var(--red);
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 10px;
 }
 
 .close-vhs {
-    background: #111;
+    margin-top: 35px;
 
-    color: #aaa;
+    padding: 13px 20px;
 
     border:
-        1px solid var(--line);
+        1px solid
+        rgba(255,0,0,.25);
 
-    padding: 10px 15px;
+    background: #0d0d0d;
+
+    color: white;
 
     border-radius: 8px;
 
     cursor: pointer;
 
-    font-family: Inter, sans-serif;
-
-    font-size: 10px;
-
     font-weight: 700;
 
-    letter-spacing: 2px;
+    transition: .25s;
 }
 
 .close-vhs:hover {
-    color: white;
+    background: var(--red);
 
-    border-color:
-        rgba(255,0,0,0.4);
-}
-
-.vhs-divider {
-    height: 1px;
-
-    background: var(--line);
-
-    margin: 35px 0;
+    border-color: var(--red);
 }
 
 /* =========================================================
-   VIDEOS EN DESARROLLO
-========================================================= */
+   PRÓXIMAMENTE
+   ========================================================= */
 
-.development {
-    padding-top: 40px;
+.locked-section {
+    position: relative;
 }
 
-.video-list {
+.locked-grid {
     display: grid;
 
     grid-template-columns:
@@ -465,84 +600,210 @@ section {
     gap: 18px;
 }
 
-.video-card {
+.locked-card {
+    min-height: 250px;
+
+    padding: 30px;
+
     position: relative;
 
-    height: 190px;
-
     overflow: hidden;
+
+    border:
+        1px solid
+        rgba(255,255,255,.07);
+
+    border-radius: 20px;
 
     background:
         linear-gradient(
             145deg,
-            var(--card2),
-            var(--card)
+            #111,
+            #080808
         );
 
-    border:
-        1px solid var(--line);
-
-    border-radius: 20px;
+    opacity: .72;
 }
 
-.video-name {
+.locked-icon {
+    font-size: 48px;
+
+    filter: grayscale(1);
+
+    opacity: .65;
+}
+
+.locked-card h3 {
+    margin-top: 30px;
+
+    font-size: 21px;
+}
+
+.locked-card p {
+    margin-top: 8px;
+
+    color: #666;
+
+    font-size: 13px;
+}
+
+.locked-badge {
     position: absolute;
 
-    top: 30px;
+    right: 25px;
+    top: 25px;
 
-    left: 30px;
+    padding: 7px 11px;
 
-    right: 30px;
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    border-radius: 7px;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
 
     color: #777;
-
-    font-size: 18px;
-
-    font-weight: 800;
-
-    filter: blur(6px);
-
-    user-select: none;
 }
 
-.video-lock {
+/* =========================================================
+   VIDEOS EN DESARROLLO
+   ========================================================= */
+
+.video-list {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+.video-item {
+    position: relative;
+
+    min-height: 88px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 20px 25px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.07);
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            100deg,
+            #0c0c0c,
+            #080808
+        );
+
+    overflow: hidden;
+}
+
+.video-item::before {
+    content: "";
+
     position: absolute;
 
     inset: 0;
+
+    background:
+        repeating-linear-gradient(
+            90deg,
+            transparent 0,
+            transparent 4px,
+            rgba(255,255,255,.012) 5px
+        );
+
+    pointer-events: none;
+}
+
+.video-info {
+    min-width: 0;
+}
+
+.video-status {
+    display: block;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 8px;
+}
+
+.video-status.available {
+    color: var(--green);
+}
+
+.video-status.soon {
+    color: var(--yellow);
+}
+
+.video-status.locked {
+    color: var(--red);
+}
+
+.video-name {
+    font-size: 14px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+.video-name.blur {
+    filter: blur(5px);
+
+    user-select: none;
+
+    opacity: .6;
+}
+
+.video-lock {
+    flex-shrink: 0;
 
     display: flex;
 
     flex-direction: column;
 
-    justify-content: center;
-
     align-items: center;
 
-    gap: 10px;
+    gap: 5px;
 
-    background:
-        rgba(5,5,5,0.30);
+    color: #666;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    font-weight: 700;
 }
 
-.lock {
-    font-size: 38px;
+.video-lock-icon {
+    font-size: 25px;
 
     filter: grayscale(1);
 }
 
-.coming {
-    color: #aaa;
-
-    font-size: 10px;
-
-    font-weight: 800;
-
-    letter-spacing: 4px;
-}
-
 /* =========================================================
-   CALIFICACIÓN
-========================================================= */
+   RECOMENDACIONES
+   ========================================================= */
 
 .rating {
     text-align: center;
@@ -565,19 +826,26 @@ section {
 
     cursor: pointer;
 
-    transition: 0.2s;
+    transition: .2s;
+
+    user-select: none;
 }
 
-.star:hover,
-.star.active {
+.star:hover {
     color: #ffd000;
 
     transform: scale(1.15);
 }
 
-.review-box {
-    display: none;
+.star.active {
+    color: #ffd000;
 
+    text-shadow:
+        0 0 15px
+        rgba(255,208,0,.25);
+}
+
+.review-box {
     max-width: 600px;
 
     margin: auto;
@@ -585,11 +853,26 @@ section {
     background: #0d0d0d;
 
     border:
-        1px solid var(--line);
+        1px solid
+        var(--line);
 
     padding: 30px;
 
     border-radius: 20px;
+
+    text-align: left;
+}
+
+.review-rating {
+    text-align: center;
+
+    color: #777;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 15px;
 }
 
 .review-box textarea {
@@ -597,12 +880,16 @@ section {
 
     height: 120px;
 
-    resize: none;
+    resize: vertical;
+
+    min-height: 100px;
+    max-height: 250px;
 
     background: #050505;
 
     border:
-        1px solid var(--line);
+        1px solid
+        var(--line);
 
     color: white;
 
@@ -612,14 +899,20 @@ section {
 
     margin-bottom: 15px;
 
-    font-family: Inter, sans-serif;
+    font-family: inherit;
 
     outline: none;
+
+    transition: border-color .2s;
 }
 
 .review-box textarea:focus {
     border-color:
-        rgba(255,0,0,0.4);
+        rgba(255,0,0,.45);
+}
+
+.review-box textarea::placeholder {
+    color: #555;
 }
 
 .review-box button {
@@ -635,106 +928,61 @@ section {
 
     border-radius: 8px;
 
-    font-weight: 700;
+    font-weight: 800;
 
     cursor: pointer;
+
+    transition: .2s;
 }
 
-.review-status {
+.review-box button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 25px
+        rgba(255,255,255,.08);
+}
+
+.review-box button:active {
+    transform: translateY(0);
+}
+
+.review-result {
     display: none;
+
+    margin-top: 15px;
+
+    padding: 14px;
+
+    border-radius: 10px;
+
+    background:
+        rgba(54,255,136,.05);
+
+    border:
+        1px solid
+        rgba(54,255,136,.16);
 
     color: var(--green);
 
-    font-size: 11px;
+    font-size: 12px;
 
-    letter-spacing: 1px;
-
-    margin-top: 15px;
-}
-
-/* =========================================================
-   REDES
-========================================================= */
-
-.socials {
-    display: flex;
-
-    justify-content: center;
-
-    gap: 15px;
-
-    flex-wrap: wrap;
-}
-
-.social {
-    width: 55px;
-
-    height: 55px;
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    border-radius: 15px;
-
-    background: #111;
-
-    border:
-        1px solid var(--line);
-
-    font-size: 20px;
-
-    text-decoration: none;
-
-    color: white;
-
-    transition: 0.3s;
-}
-
-.social:hover {
-    transform: translateY(-5px);
-}
-
-.social.disabled {
-    filter: grayscale(1);
-
-    opacity: 0.25;
-
-    cursor: not-allowed;
-}
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-footer {
     text-align: center;
 
-    padding: 60px 20px;
-
-    border-top:
-        1px solid var(--line);
-
-    color: #555;
-
-    font-size: 12px;
+    line-height: 1.6;
 }
 
 /* =========================================================
-   CHAT
-========================================================= */
+   MENSAJE FLOTANTE
+   ========================================================= */
 
 .message-button {
     position: fixed;
 
     right: 25px;
-
     bottom: 25px;
 
     width: 60px;
-
     height: 60px;
 
     border-radius: 50%;
@@ -756,7 +1004,7 @@ footer {
 
     box-shadow:
         0 0 30px
-        rgba(255,255,255,0.15);
+        rgba(255,255,255,.15);
 }
 
 @keyframes float {
@@ -779,18 +1027,18 @@ footer {
     position: fixed;
 
     right: 25px;
-
     bottom: 100px;
 
     width:
-        min(390px,
+        min(370px,
         calc(100% - 50px));
 
     background:
-        rgba(15,15,15,0.97);
+        rgba(15,15,15,.97);
 
     border:
-        1px solid var(--line);
+        1px solid
+        var(--line);
 
     padding: 25px;
 
@@ -802,30 +1050,26 @@ footer {
 
     box-shadow:
         0 20px 70px
-        rgba(0,0,0,0.5);
+        rgba(0,0,0,.6);
 }
 
-.welcome.open {
+.welcome.show {
     display: block;
 
     animation:
-        chatOpen 0.25s ease;
+        popup .22s ease;
 }
 
-@keyframes chatOpen {
+@keyframes popup {
 
     from {
         opacity: 0;
-
-        transform:
-            translateY(10px);
+        transform: translateY(10px) scale(.98);
     }
 
     to {
         opacity: 1;
-
-        transform:
-            translateY(0);
+        transform: translateY(0) scale(1);
     }
 
 }
@@ -842,90 +1086,96 @@ footer {
     line-height: 1.8;
 }
 
-.chat-label {
-    color: var(--red) !important;
-
-    font-size: 10px !important;
-
-    font-weight: 800;
-
-    letter-spacing: 3px;
-
-    margin-bottom: 8px;
-}
-
-.chat-form {
+.welcome-action {
     margin-top: 20px;
 
-    padding-top: 20px;
-
-    border-top:
-        1px solid var(--line);
-}
-
-.chat-form textarea {
     width: 100%;
 
-    height: 90px;
+    padding: 13px;
 
-    resize: none;
+    border: 1px solid var(--line);
 
-    background: #050505;
+    background: #111;
 
     color: white;
 
-    border:
-        1px solid var(--line);
-
-    border-radius: 10px;
-
-    padding: 12px;
-
-    font-family: Inter, sans-serif;
-
-    outline: none;
-}
-
-.chat-form textarea:focus {
-    border-color:
-        rgba(255,0,0,0.4);
-}
-
-.chat-form button {
-    width: 100%;
-
-    margin-top: 10px;
-
-    padding: 12px;
-
-    border: none;
-
-    border-radius: 8px;
-
-    background: white;
-
-    color: black;
-
-    font-weight: 800;
+    border-radius: 9px;
 
     cursor: pointer;
+
+    font-weight: 700;
+
+    transition: .2s;
 }
 
-.chat-status {
-    display: none;
+.welcome-action:hover {
+    border-color:
+        rgba(255,0,0,.4);
 
-    margin-top: 10px;
+    background: #151515;
+}
 
-    color: var(--green);
+/* =========================================================
+   DIAGNÓSTICO
+   ========================================================= */
 
-    font-size: 10px;
+.js-status {
+    position: fixed;
+
+    left: 15px;
+    bottom: 15px;
+
+    z-index: 1500;
+
+    padding: 7px 10px;
+
+    border-radius: 7px;
+
+    background: rgba(10,10,10,.85);
+
+    border:
+        1px solid
+        rgba(54,255,136,.15);
+
+    color: #555;
+
+    font-size: 8px;
 
     letter-spacing: 1px;
+
+    pointer-events: none;
+
+    opacity: .65;
+}
+
+.js-status.error {
+    color: var(--red);
+
+    border-color:
+        rgba(255,0,0,.3);
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+footer {
+    text-align: center;
+
+    padding: 60px 20px;
+
+    border-top:
+        1px solid
+        var(--line);
+
+    color: #555;
+
+    font-size: 12px;
 }
 
 /* =========================================================
    RESPONSIVE
-========================================================= */
+   ========================================================= */
 
 @media(max-width:800px) {
 
@@ -941,8 +1191,16 @@ footer {
         grid-template-columns: 1fr;
     }
 
-    .video-list {
+    .locked-grid {
         grid-template-columns: 1fr;
+    }
+
+    .video-item {
+        align-items: flex-start;
+    }
+
+    .video-name {
+        white-space: normal;
     }
 
     .end-title {
@@ -961,24 +1219,40 @@ footer {
         font-size: 17px;
     }
 
-    .section-title {
-        font-size: 34px;
+    .vhs-header {
+        padding: 22px;
     }
 
-    .vhs-top {
-        flex-direction: column;
+    .vhs-header-icon {
+        font-size: 35px;
+    }
+
+    .vhs-header h3 {
+        font-size: 18px;
+    }
+
+    .star {
+        font-size: 36px;
+    }
+
+    .stars {
+        gap: 5px;
     }
 
     .message-button {
         right: 18px;
-
         bottom: 18px;
+
+        width: 55px;
+        height: 55px;
     }
 
     .welcome {
         right: 18px;
+        bottom: 85px;
 
-        bottom: 90px;
+        width:
+            calc(100% - 36px);
     }
 
 }
@@ -988,10 +1262,9 @@ footer {
 
 <body>
 
-
-<!-- =====================================================
+<!-- =======================================================
      NAVEGACIÓN
-===================================================== -->
+     ======================================================= -->
 
 <nav>
 
@@ -1008,6 +1281,7 @@ footer {
         <select
             class="language"
             id="language"
+            aria-label="Idioma"
         >
 
             <option value="es">
@@ -1025,9 +1299,9 @@ footer {
 </nav>
 
 
-<!-- =====================================================
+<!-- =======================================================
      HERO
-===================================================== -->
+     ======================================================= -->
 
 <header class="hero">
 
@@ -1038,12 +1312,14 @@ footer {
         </div>
 
         <h1 class="end-title">
-            BIENVENIDO
+            GROBLOX016
         </h1>
 
-        <div class="hero-subtitle">
-            ARCHIVO DIGITAL DE GROBLOX016
-        </div>
+        <p class="hero-description">
+            Archivo oficial de información, proyectos,
+            vídeos y contenido relacionado con
+            Groblox016.
+        </p>
 
     </div>
 
@@ -1054,11 +1330,11 @@ footer {
 </header>
 
 
-<!-- =====================================================
+<!-- =======================================================
      CENTRO DE NOTICIAS
-===================================================== -->
+     ======================================================= -->
 
-<section id="informacion">
+<section id="noticias">
 
 <div class="container">
 
@@ -1070,15 +1346,17 @@ footer {
         Centro de Noticias
     </h2>
 
-
     <div class="news-grid">
-
 
         <!-- VHS -->
 
         <div
             class="news-card"
             id="vhsCard"
+            role="button"
+            tabindex="0"
+            aria-controls="vhsWrapper"
+            aria-expanded="false"
         >
 
             <div class="news-icon">
@@ -1100,7 +1378,7 @@ footer {
         </div>
 
 
-        <!-- PRÓXIMAMENTE -->
+        <!-- PRÓXIMAMENTE 1 -->
 
         <div class="news-card disabled">
 
@@ -1115,7 +1393,7 @@ footer {
                 </h3>
 
                 <p>
-                    No disponible.
+                    🔒 Sección bloqueada.
                 </p>
 
             </div>
@@ -1123,225 +1401,8 @@ footer {
         </div>
 
 
-        <!-- PRÓXIMAMENTE -->
+        <!-- PRÓXIMAMENTE 2 -->
 
         <div class="news-card disabled">
 
-            <div class="news-icon">
-                ❔
-            </div>
-
-            <div>
-
-                <h3>
-                    Próximamente
-                </h3>
-
-                <p>
-                    No disponible.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- =================================================
-         CONTENIDO VHS
-         ESTÁ DIRECTAMENTE DEBAJO DE LA TARJETA VHS
-    ================================================== -->
-
-    <div
-        class="vhs-section"
-        id="vhsSection"
-    >
-
-        <div class="vhs-content">
-
-
-            <div class="vhs-top">
-
-                <div>
-
-                    <div class="section-label">
-                        ARCHIVO · 001
-                    </div>
-
-                    <h3 style="font-size:25px;">
-                        SECCIÓN VHS
-                    </h3>
-
-                </div>
-
-
-                <button
-                    class="close-vhs"
-                    id="closeVhs"
-                >
-                    CERRAR
-                </button>
-
-            </div>
-
-
-            <p>
-
-                La sección VHS, son videos grabados
-                en Roblox, videojuego
-                <strong>"Unseen Liminality"</strong>,
-                con entidades de la película Backrooms,
-                entidades como
-                <strong>"Cap'n Clark"</strong>
-                y
-                <strong>"Still Life"</strong>.
-
-            </p>
-
-
-            <div class="vhs-divider"></div>
-
-
-            <p>
-
-                La idea de esta serie de videos comenzó
-                tras el lanzamiento de la película
-                Backrooms, y la vuelta de la comunidad
-                a las redes sociales.
-
-            </p>
-
-
-            <div class="vhs-divider"></div>
-
-
-            <p>
-
-                Esta serie comenzó el
-                <strong>MARTES, 23 DE JUNIO, 2026</strong>,
-
-                con el primer VHS titulado como
-                <strong>"house.footage.1987.mp4"</strong>.
-
-            </p>
-
-
-            <div class="vhs-divider"></div>
-
-
-            <p>
-
-                Aunque toda esta serie de videos está
-                inspirada en los VHS de
-                <strong>Kane Pixels</strong>
-                y toda su gran e inspiradora serie
-                de videos VHS de las oficinas amarillas.
-
-            </p>
-
-
-            <div class="vhs-divider"></div>
-
-
-            <p>
-
-                Actualmente se está trabajando en los
-                vídeos ya que se encuentran en recta
-                final de estos vídeos en el
-                <strong>Canal de Groblox016</strong>.
-
-            </p>
-
-
-            <div class="vhs-divider"></div>
-
-
-            <div class="section-label">
-                INFORMACIÓN
-            </div>
-
-
-            <p>
-
-                La serie de VHS tendrá todos sus
-                capítulos disponibles después del
-                lanzamiento del último, que será el día
-                <strong>
-                    JUEVES 23 DE JULIO, a las 17:45 HRS
-                    (hora chilena)
-                </strong>.
-
-            </p>
-
-
-            <br>
-
-
-            <p>
-
-                Quizás después de esta serie se suba
-                una nueva, pero en un universo paralelo
-                y con otra trama, que lo vemos muy poco
-                probable, pero tampoco está descartada
-                la idea.
-
-            </p>
-
-
-        </div>
-
-    </div>
-
-</div>
-
-</section>
-
-
-<!-- =====================================================
-     VÍDEOS EN DESARROLLO
-===================================================== -->
-
-<section
-    class="development"
-    id="videos"
->
-
-<div class="container">
-
-    <div class="section-label">
-        ARCHIVO · 002
-    </div>
-
-    <h2 class="section-title">
-        VÍDEOS EN DESARROLLO
-    </h2>
-
-
-    <div class="video-list">
-
-
-        <div class="video-card">
-
-            <div class="video-name">
-                house.footage.1988.mp4
-            </div>
-
-            <div class="video-lock">
-
-                <div class="lock">
-                    🔒
-                </div>
-
-                <div class="coming">
-                    PRONTO
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="video-card">
-
-            <div class="
+            <div class="news-i
