@@ -1,52 +1,96 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>GROBLOX016 | En mantenimiento</title>
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Groblox016 | Archivo Oficial</title>
+
 
 <style>
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+/* =========================================================
+   GROBLOX016 V3
+   IDENTIDAD VISUAL BASADA EN V1
+========================================================= */
 
+@import url(
+    'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap'
+);
+
+
+/* =========================================================
+   VARIABLES
+========================================================= */
 
 :root {
-    --bg: #000000;
-    --red: #ff2020;
-    --red-dark: #8f0000;
-    --red-soft: rgba(255, 32, 32, 0.18);
-    --text: #f2f2f2;
+
+    --bg: #050505;
+
+    --card: #0d0d0d;
+
+    --card2: #111111;
+
+    --text: #f5f5f5;
+
     --muted: #858585;
-    --line: rgba(255,255,255,0.08);
+
+    --line:
+        rgba(255,255,255,0.09);
+
+    --red: #ff2020;
+
+    --red2: #b40000;
+
+    --green: #36ff88;
+
 }
 
 
+/* =========================================================
+   RESET
+========================================================= */
+
 * {
+
     box-sizing: border-box;
+
     margin: 0;
+
     padding: 0;
+
 }
 
 
 html {
+
     scroll-behavior: smooth;
+
 }
 
 
 body {
-    background: #000;
+
+    background: var(--bg);
+
     color: var(--text);
+
     font-family: 'Inter', sans-serif;
-    min-height: 100vh;
+
     overflow-x: hidden;
+
 }
 
 
-/* =========================================
-   EFECTO DE LÍNEAS VHS
-========================================= */
+/* =========================================================
+   EFECTO VHS
+========================================================= */
 
 body::before {
 
@@ -63,18 +107,16 @@ body::before {
     opacity: 0.035;
 
     background-image:
+
         repeating-linear-gradient(
             0deg,
             transparent,
             transparent 2px,
             white 3px
         );
+
 }
 
-
-/* =========================================
-   VIÑETA
-========================================= */
 
 body::after {
 
@@ -89,475 +131,652 @@ body::after {
     z-index: 9998;
 
     background:
+
         radial-gradient(
             circle at center,
-            transparent 35%,
-            rgba(0,0,0,0.75) 100%
+            transparent 30%,
+            rgba(0,0,0,0.55) 100%
         );
+
 }
 
 
-/* =========================================
-   ELEMENTOS ROJOS DE FONDO
-========================================= */
+/* =========================================================
+   NAVEGACIÓN
+========================================================= */
 
-.red-line {
+nav {
 
     position: fixed;
 
-    background: var(--red);
-
-    pointer-events: none;
-
-    z-index: 1;
-
-    opacity: 0.75;
-
-    box-shadow:
-        0 0 15px rgba(255,0,0,0.35),
-        0 0 40px rgba(255,0,0,0.08);
-}
-
-
-.red-line.top {
-
     top: 0;
-
-    left: 0;
 
     width: 100%;
 
-    height: 2px;
-}
+    height: 70px;
 
+    z-index: 1000;
 
-.red-line.bottom {
+    display: flex;
 
-    bottom: 0;
+    justify-content: space-between;
 
-    left: 0;
+    align-items: center;
 
-    width: 100%;
+    padding: 0 6%;
 
-    height: 2px;
-}
+    background:
+        rgba(5,5,5,0.78);
 
+    backdrop-filter:
+        blur(20px);
 
-.red-line.left {
+    border-bottom:
+        1px solid var(--line);
 
-    top: 0;
-
-    left: 0;
-
-    width: 2px;
-
-    height: 100%;
-}
-
-
-.red-line.right {
-
-    top: 0;
-
-    right: 0;
-
-    width: 2px;
-
-    height: 100%;
-}
-
-
-/* =========================================
-   DECORACIÓN
-========================================= */
-
-.corner {
-
-    position: fixed;
-
-    width: 80px;
-
-    height: 80px;
-
-    border-color: var(--red);
-
-    border-style: solid;
-
-    opacity: 0.65;
-
-    pointer-events: none;
-
-    z-index: 2;
-}
-
-
-.corner.top-left {
-
-    top: 35px;
-
-    left: 35px;
-
-    border-width: 2px 0 0 2px;
-}
-
-
-.corner.top-right {
-
-    top: 35px;
-
-    right: 35px;
-
-    border-width: 2px 2px 0 0;
-}
-
-
-.corner.bottom-left {
-
-    bottom: 35px;
-
-    left: 35px;
-
-    border-width: 0 0 2px 2px;
-}
-
-
-.corner.bottom-right {
-
-    bottom: 35px;
-
-    right: 35px;
-
-    border-width: 0 2px 2px 0;
-}
-
-
-/* =========================================
-   CONTENEDOR PRINCIPAL
-========================================= */
-
-.page {
-
-    position: relative;
-
-    z-index: 5;
-
-    width: min(1000px, 88%);
-
-    margin: auto;
-
-    padding:
-        80px 0
-        100px;
-}
-
-
-/* =========================================
-   ENCABEZADO
-========================================= */
-
-.header {
-
-    text-align: center;
-
-    margin-bottom: 70px;
 }
 
 
 .logo {
 
-    font-size: clamp(30px, 6vw, 58px);
+    font-size: 20px;
 
     font-weight: 900;
 
-    letter-spacing: -3px;
+    letter-spacing: -1px;
 
-    color: white;
-
-    text-shadow:
-        0 0 20px rgba(255,0,0,0.12);
-
-    margin-bottom: 18px;
 }
 
 
 .logo span {
 
     color: var(--red);
+
+}
+
+
+.nav-right {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+
 }
 
 
 .status {
 
-    display: inline-flex;
+    font-size: 11px;
 
-    align-items: center;
+    color: var(--green);
 
-    gap: 8px;
-
-    color: var(--red);
-
-    font-size: 10px;
-
-    font-weight: 800;
-
-    letter-spacing: 4px;
-
-    text-transform: uppercase;
-
-    border: 1px solid rgba(255,32,32,0.25);
-
-    background: rgba(255,32,32,0.035);
-
-    padding: 9px 15px;
-
-    border-radius: 6px;
-}
-
-
-.status-dot {
-
-    width: 6px;
-
-    height: 6px;
-
-    background: var(--red);
-
-    border-radius: 50%;
-
-    box-shadow:
-        0 0 10px var(--red);
-
-    animation: blink 1.5s infinite;
-}
-
-
-@keyframes blink {
-
-    0%,
-    100% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: 0.25;
-    }
+    letter-spacing: 1px;
 
 }
 
 
-/* =========================================
-   COMUNICADO
-========================================= */
+.status::before {
 
-.announcement {
+    content: "●";
 
-    position: relative;
+    margin-right: 7px;
 
-    background:
-        linear-gradient(
-            145deg,
-            rgba(20,20,20,0.92),
-            rgba(5,5,5,0.96)
-        );
-
-    border: 1px solid var(--line);
-
-    border-left:
-        3px solid var(--red);
-
-    padding:
-        clamp(28px, 5vw, 55px);
-
-    border-radius: 4px;
-
-    box-shadow:
-        0 30px 100px rgba(0,0,0,0.7),
-        inset 0 0 80px rgba(255,0,0,0.015);
 }
 
 
-/* línea superior */
+.language {
 
-.announcement::before {
-
-    content: "";
-
-    position: absolute;
-
-    top: -1px;
-
-    left: 30px;
-
-    width: 120px;
-
-    height: 1px;
-
-    background: var(--red);
-
-    box-shadow:
-        0 0 15px rgba(255,0,0,0.5);
-}
-
-
-.file-label {
-
-    color: var(--red);
-
-    font-size: 10px;
-
-    font-weight: 800;
-
-    letter-spacing: 4px;
-
-    margin-bottom: 18px;
-}
-
-
-h1 {
-
-    font-size:
-        clamp(28px, 5vw, 52px);
-
-    line-height: 1;
-
-    letter-spacing: -2px;
-
-    margin-bottom: 35px;
-}
-
-
-h1 span {
-
-    color: var(--red);
-}
-
-
-p {
-
-    color: #b0b0b0;
-
-    font-size: 14px;
-
-    line-height: 2;
-
-    margin-bottom: 24px;
-}
-
-
-strong {
+    background: #111;
 
     color: white;
 
-    font-weight: 700;
+    border:
+        1px solid var(--line);
+
+    padding: 8px 12px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
 }
 
 
-/* =========================================
-   FECHAS
-========================================= */
+/* =========================================================
+   HERO
+========================================================= */
 
-.dates {
+.hero {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    padding:
+        100px 20px 60px;
+
+    position: relative;
+
+}
+
+
+.hero-content {
+
+    max-width: 1000px;
+
+}
+
+
+.eyebrow {
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+    letter-spacing: 5px;
+
+    margin-bottom: 20px;
+
+    text-transform: uppercase;
+
+}
+
+
+.end-title {
+
+    font-size:
+        clamp(70px, 15vw, 190px);
+
+    line-height: 0.85;
+
+    font-weight: 900;
+
+    letter-spacing: -8px;
+
+    color: var(--red);
+
+    text-shadow:
+
+        0 0 20px
+        rgba(255,0,0,0.35),
+
+        0 0 70px
+        rgba(255,0,0,0.15);
+
+    animation:
+        pulse 3s infinite
+        ease-in-out;
+
+}
+
+
+@keyframes pulse {
+
+    0%,100% {
+
+        opacity: 1;
+
+        transform:
+            scale(1);
+
+    }
+
+    50% {
+
+        opacity: 0.82;
+
+        transform:
+            scale(1.01);
+
+    }
+
+}
+
+
+.hero-subtitle {
+
+    margin-top: 30px;
+
+    color: var(--muted);
+
+    font-size: 14px;
+
+    letter-spacing: 2px;
+
+}
+
+
+.scroll {
+
+    position: absolute;
+
+    bottom: 30px;
+
+    color: #555;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+}
+
+
+/* =========================================================
+   CONTENEDOR
+========================================================= */
+
+.container {
+
+    width:
+        min(1100px, 90%);
+
+    margin: auto;
+
+}
+
+
+section {
+
+    padding: 100px 0;
+
+}
+
+
+.section-label {
+
+    color: var(--red);
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 12px;
+
+}
+
+
+.section-title {
+
+    font-size:
+        clamp(32px, 5vw, 55px);
+
+    margin-bottom: 50px;
+
+    letter-spacing: -2px;
+
+}
+
+
+/* =========================================================
+   CENTRO DE NOTICIAS
+========================================================= */
+
+.news-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 18px;
+
+}
+
+
+.news-card {
+
+    min-height: 300px;
+
+    padding: 30px;
+
+    background:
+
+        linear-gradient(
+            145deg,
+            var(--card2),
+            var(--card)
+        );
+
+    border:
+        1px solid var(--line);
+
+    border-radius: 20px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    transition:
+        0.3s;
+
+    cursor: pointer;
+
+}
+
+
+.news-card:hover {
+
+    transform:
+        translateY(-7px);
+
+    border-color:
+        rgba(255,0,0,0.35);
+
+}
+
+
+.news-card.disabled {
+
+    cursor: not-allowed;
+
+    opacity: 0.45;
+
+}
+
+
+.news-card.disabled:hover {
+
+    transform: none;
+
+    border-color:
+        var(--line);
+
+}
+
+
+.news-icon {
+
+    font-size: 55px;
+
+    filter:
+        grayscale(1);
+
+}
+
+
+.news-card h3 {
+
+    font-size: 22px;
+
+}
+
+
+.news-card p {
+
+    color: var(--muted);
+
+    font-size: 13px;
+
+    line-height: 1.7;
+
+}
+
+
+.available {
+
+    color:
+        var(--green) !important;
+
+}
+
+
+/* =========================================================
+   PANEL VHS
+========================================================= */
+
+.vhs-panel {
+
+    max-height: 0;
+
+    overflow: hidden;
+
+    opacity: 0;
+
+    margin-top: 0;
+
+    transition:
+
+        max-height 0.7s ease,
+
+        opacity 0.4s ease,
+
+        margin 0.4s ease;
+
+}
+
+
+.vhs-panel.open {
+
+    max-height: 3000px;
+
+    opacity: 1;
+
+    margin-top: 35px;
+
+}
+
+
+.vhs-content {
+
+    background: #0b0b0b;
+
+    border:
+        1px solid var(--line);
+
+    padding:
+        clamp(25px, 5vw, 60px);
+
+    border-radius: 24px;
+
+    line-height: 1.9;
+
+    color: #c5c5c5;
+
+}
+
+
+.vhs-content strong {
+
+    color: white;
+
+}
+
+
+.vhs-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 30px;
+
+}
+
+
+.vhs-header-title {
+
+    font-size: 22px;
+
+    font-weight: 800;
+
+}
+
+
+.close-vhs {
+
+    background: #111;
+
+    color: #aaa;
+
+    border:
+        1px solid var(--line);
+
+    padding: 10px 16px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-family: Inter;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    transition: 0.2s;
+
+}
+
+
+.close-vhs:hover {
+
+    color: white;
+
+    border-color:
+        rgba(255,0,0,0.4);
+
+}
+
+
+/* =========================================================
+   SEPARADORES VHS
+========================================================= */
+
+.vhs-divider {
+
+    height: 1px;
+
+    background:
+        var(--line);
+
+    margin:
+        35px 0;
+
+}
+
+
+/* =========================================================
+   VIDEOS EN DESARROLLO
+========================================================= */
+
+.development {
+
+    margin-top: 70px;
+
+}
+
+
+.video-list {
 
     display: grid;
 
     grid-template-columns:
         repeat(2, 1fr);
 
-    gap: 15px;
+    gap: 18px;
 
-    margin:
-        35px 0
-        45px;
 }
 
 
-.date {
+.video-card {
 
-    padding: 24px;
+    position: relative;
 
-    background: #080808;
+    min-height: 180px;
 
-    border: 1px solid var(--line);
+    padding: 30px;
 
-    border-top:
-        2px solid var(--red);
+    background:
 
-    transition: 0.25s;
+        linear-gradient(
+            145deg,
+            var(--card2),
+            var(--card)
+        );
+
+    border:
+        1px solid var(--line);
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
 }
 
 
-.date:hover {
+.video-name {
 
-    border-color:
-        rgba(255,32,32,0.35);
+    position: absolute;
 
-    transform: translateY(-3px);
+    left: 30px;
+
+    top: 30px;
+
+    color: #777;
+
+    font-size: 18px;
+
+    font-weight: 700;
+
+    filter:
+        blur(6px);
+
+    user-select: none;
+
 }
 
 
-.date-label {
+.video-overlay {
 
-    color: #666;
+    position: absolute;
 
-    font-size: 9px;
-
-    letter-spacing: 3px;
-
-    margin-bottom: 10px;
-}
-
-
-.date-value {
-
-    color: white;
-
-    font-size: 20px;
-
-    font-weight: 800;
-
-    letter-spacing: -0.5px;
-}
-
-
-.date-value span {
-
-    color: var(--red);
-}
-
-
-/* =========================================
-   SEPARADOR
-========================================= */
-
-.separator {
+    inset: 0;
 
     display: flex;
 
+    flex-direction: column;
+
+    justify-content: center;
+
     align-items: center;
 
-    gap: 15px;
-
-    margin: 50px 0 35px;
-}
-
-
-.separator::before,
-.separator::after {
-
-    content: "";
-
-    height: 1px;
+    gap: 10px;
 
     background:
-        rgba(255,32,32,0.25);
+        rgba(5,5,5,0.35);
 
-    flex: 1;
 }
 
 
-.separator-text {
+.lock {
 
-    color: var(--red);
+    font-size: 38px;
+
+    filter:
+        grayscale(1);
+
+}
+
+
+.coming {
+
+    color: #aaa;
 
     font-size: 10px;
 
@@ -565,247 +784,470 @@ strong {
 
     letter-spacing: 4px;
 
-    white-space: nowrap;
 }
 
 
-/* =========================================
-   LISTA DE ACTUALIZACIONES
-========================================= */
+/* =========================================================
+   CALIFICACIÓN
+========================================================= */
 
-.work-list {
+.rating {
 
-    list-style: none;
+    text-align: center;
 
-    display: grid;
+}
+
+
+.stars {
+
+    display: flex;
+
+    justify-content: center;
 
     gap: 10px;
 
-    margin-top: 25px;
+    margin: 30px 0;
+
 }
 
 
-.work-list li {
+.star {
 
-    position: relative;
+    font-size: 45px;
 
-    padding:
-        16px
-        18px
-        16px
-        42px;
+    color: #333;
 
-    background: #080808;
+    cursor: pointer;
 
-    border: 1px solid var(--line);
+    transition:
+        0.2s;
 
-    color: #aaa;
-
-    font-size: 13px;
-
-    line-height: 1.6;
-
-    transition: 0.25s;
 }
 
 
-.work-list li::before {
+.star:hover,
+.star.active {
 
-    content: "—";
+    color: #ffd000;
 
-    position: absolute;
+    transform:
+        scale(1.15);
 
-    left: 18px;
-
-    color: var(--red);
-
-    font-weight: 900;
 }
 
 
-.work-list li:hover {
+.review-box {
 
-    border-color:
-        rgba(255,32,32,0.25);
+    display: none;
 
-    color: #ddd;
+    max-width: 600px;
 
-    transform: translateX(3px);
-}
+    margin: auto;
 
+    background: #0d0d0d;
 
-/* =========================================
-   BLOQUE FINAL
-========================================= */
-
-.final-message {
-
-    margin-top: 55px;
-
-    padding-top: 35px;
-
-    border-top:
+    border:
         1px solid var(--line);
+
+    padding: 30px;
+
+    border-radius: 20px;
+
 }
 
 
-.final-message p:last-child {
+.review-box textarea {
 
-    margin-bottom: 0;
-}
+    width: 100%;
 
+    height: 120px;
 
-.signature {
+    resize: none;
 
-    margin-top: 40px;
+    background: #050505;
+
+    border:
+        1px solid var(--line);
 
     color: white;
 
-    font-size: 13px;
+    padding: 15px;
 
-    font-weight: 800;
+    border-radius: 10px;
 
-    letter-spacing: 2px;
+    margin-bottom: 15px;
 
-    text-align: right;
+    font-family: Inter;
+
+    outline: none;
+
 }
 
 
-.signature span {
+.review-box textarea:focus {
 
-    color: var(--red);
+    border-color:
+        rgba(255,0,0,0.4);
 
-    display: block;
-
-    margin-top: 7px;
 }
 
 
-/* =========================================
-   PIE
-========================================= */
+.review-box button {
+
+    width: 100%;
+
+    padding: 14px;
+
+    background: white;
+
+    color: black;
+
+    border: none;
+
+    border-radius: 8px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+
+}
+
+
+.review-box button:hover {
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+/* =========================================================
+   MENSAJE DE RECOMENDACIÓN ENVIADA
+========================================================= */
+
+.review-status {
+
+    margin-top: 15px;
+
+    color: var(--green);
+
+    font-size: 11px;
+
+    letter-spacing: 1px;
+
+    display: none;
+
+}
+
+
+/* =========================================================
+   REDES
+========================================================= */
+
+.socials {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+
+}
+
+
+.social {
+
+    width: 55px;
+
+    height: 55px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    border-radius: 15px;
+
+    background: #111;
+
+    border:
+        1px solid var(--line);
+
+    font-size: 20px;
+
+    text-decoration: none;
+
+    color: white;
+
+    transition:
+        0.3s;
+
+}
+
+
+.social:hover {
+
+    transform:
+        translateY(-5px);
+
+}
+
+
+.social.disabled {
+
+    filter:
+        grayscale(1);
+
+    opacity: 0.25;
+
+    cursor:
+        not-allowed;
+
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
 
 footer {
 
     text-align: center;
 
-    margin-top: 60px;
+    padding: 60px 20px;
 
-    color: #444;
+    border-top:
+        1px solid var(--line);
 
-    font-size: 10px;
+    color: #555;
 
-    letter-spacing: 2px;
+    font-size: 12px;
 
-    line-height: 2;
 }
 
 
-footer span {
+/* =========================================================
+   BOTÓN MENSAJE
+========================================================= */
 
-    color: #666;
+.message-button {
+
+    position: fixed;
+
+    right: 25px;
+
+    bottom: 25px;
+
+    width: 60px;
+
+    height: 60px;
+
+    border-radius: 50%;
+
+    border: none;
+
+    background: white;
+
+    color: black;
+
+    font-size: 25px;
+
+    cursor: pointer;
+
+    z-index: 2000;
+
+    animation:
+        float 2.5s infinite
+        ease-in-out;
+
+    box-shadow:
+        0 0 30px
+        rgba(255,255,255,0.15);
+
 }
 
 
-/* =========================================
+@keyframes float {
+
+    0%,100% {
+
+        transform:
+            translateY(0);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(-6px);
+
+    }
+
+}
+
+
+.message-button.stop {
+
+    animation: none;
+
+}
+
+
+/* =========================================================
+   MENSAJE
+========================================================= */
+
+.welcome {
+
+    position: fixed;
+
+    right: 25px;
+
+    bottom: 100px;
+
+    width:
+        min(370px,
+        calc(100% - 50px));
+
+    background:
+        rgba(15,15,15,0.96);
+
+    border:
+        1px solid var(--line);
+
+    padding: 25px;
+
+    border-radius: 20px;
+
+    z-index: 1999;
+
+    display: none;
+
+    box-shadow:
+        0 20px 70px
+        rgba(0,0,0,0.5);
+
+}
+
+
+.welcome h3 {
+
+    margin-bottom: 15px;
+
+}
+
+
+.welcome p {
+
+    color: #aaa;
+
+    font-size: 13px;
+
+    line-height: 1.8;
+
+}
+
+
+/* =========================================================
    RESPONSIVE
-========================================= */
+========================================================= */
 
-@media(max-width: 650px) {
+@media(max-width: 800px) {
 
-    .page {
+    nav {
 
-        width: 88%;
+        padding:
+            0 20px;
 
-        padding-top: 60px;
-
-        padding-bottom: 70px;
     }
 
 
-    .header {
+    .status {
 
-        margin-bottom: 45px;
+        display: none;
+
+    }
+
+
+    .news-grid {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .video-list {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .end-title {
+
+        letter-spacing:
+            -4px;
+
+    }
+
+}
+
+
+@media(max-width: 450px) {
+
+    .language {
+
+        font-size: 11px;
+
     }
 
 
     .logo {
 
-        letter-spacing: -2px;
+        font-size: 17px;
+
     }
 
 
-    .dates {
+    .section-title {
 
-        grid-template-columns: 1fr;
+        font-size: 34px;
+
     }
 
 
-    .corner {
+    .vhs-header {
 
-        width: 45px;
+        align-items:
+            flex-start;
 
-        height: 45px;
+        gap: 15px;
+
     }
 
 
-    .corner.top-left {
+    .message-button {
 
-        top: 20px;
+        right: 18px;
 
-        left: 20px;
+        bottom: 18px;
+
     }
 
 
-    .corner.top-right {
+    .welcome {
 
-        top: 20px;
+        right: 18px;
 
-        right: 20px;
-    }
+        bottom: 90px;
 
-
-    .corner.bottom-left {
-
-        bottom: 20px;
-
-        left: 20px;
-    }
-
-
-    .corner.bottom-right {
-
-        bottom: 20px;
-
-        right: 20px;
-    }
-
-
-    p {
-
-        font-size: 13px;
-
-        line-height: 1.9;
-    }
-
-
-    .announcement {
-
-        padding: 25px 20px;
-    }
-
-
-    .separator-text {
-
-        font-size: 8px;
-
-        letter-spacing: 2px;
-    }
-
-
-    .signature {
-
-        text-align: left;
     }
 
 }
@@ -818,359 +1260,419 @@ footer span {
 <body>
 
 
-<!-- ELEMENTOS ROJOS -->
+<!-- =========================================================
+     NAVEGACIÓN
+========================================================= -->
 
-<div class="red-line top"></div>
-<div class="red-line bottom"></div>
-<div class="red-line left"></div>
-<div class="red-line right"></div>
+<nav>
 
-<div class="corner top-left"></div>
-<div class="corner top-right"></div>
-<div class="corner bottom-left"></div>
-<div class="corner bottom-right"></div>
+    <div class="logo">
 
+        GROBLOX<span>016</span>
 
-<main class="page">
+    </div>
 
 
-    <!-- ENCABEZADO -->
-
-    <header class="header">
-
-        <div class="logo">
-            GROBLOX<span>016</span>
-        </div>
+    <div class="nav-right">
 
         <div class="status">
 
-            <div class="status-dot"></div>
-
-            SISTEMA EN EXPERIMENTACIÓN
+            ONLINE
 
         </div>
 
-    </header>
+
+        <select
+            class="language"
+            id="language"
+        >
+
+            <option value="es">
+
+                ES
+
+            </option>
 
 
-    <!-- COMUNICADO -->
+            <option value="en">
 
-    <article class="announcement">
+                EN (EN DESARROLLO)
+
+            </option>
+
+        </select>
+
+    </div>
+
+</nav>
 
 
-        <div class="file-label">
-            COMUNICADO OFICIAL · ACTUALIZACIÓN
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<header class="hero">
+
+    <div class="hero-content">
+
+        <div class="eyebrow">
+
+            ARCHIVO OFICIAL · PROYECTO VHS
+
         </div>
 
 
-        <h1>
-            Actualmente, el código de la página web de
-            <span>GROBLOX016</span> presenta múltiples fallos.
+        <h1 class="end-title">
+
+            BIENVENIDO
+
         </h1>
 
 
-        <p>
+        <div class="hero-subtitle">
 
-            Actualmente, el código de la página web de
-            <strong>GROBLOX016</strong> presenta múltiples
-            fallos. Por lo tanto, la página se encuentra
-            actualmente en una etapa de experimentación.
-
-        </p>
-
-
-        <p>
-
-            Se han llevado a cabo varias pruebas; sin embargo,
-            existen elementos que se encuentran en un estado
-            realmente crítico y que estamos intentando
-            solucionar.
-
-        </p>
-
-
-        <p>
-
-            Por este motivo, la información que podemos
-            entregar a futuro es que la página web
-            <strong>probablemente se encuentre completamente
-            disponible y funcional el día:</strong>
-
-        </p>
-
-
-        <!-- FECHAS -->
-
-        <div class="dates">
-
-
-            <div class="date">
-
-                <div class="date-label">
-                    PRIMERA FECHA
-                </div>
-
-                <div class="date-value">
-                    <span>29</span> DE AGOSTO
-                </div>
-
-            </div>
-
-
-            <div class="date">
-
-                <div class="date-label">
-                    SEGUNDA FECHA
-                </div>
-
-                <div class="date-value">
-                    <span>5</span> DE SEPTIEMBRE
-                </div>
-
-            </div>
-
+            ARCHIVO DIGITAL DE GROBLOX016
 
         </div>
 
-
-        <p>
-
-            En el caso de que la página no se encuentre
-            completamente disponible para la primera fecha,
-            la segunda fecha establecida será el
-            <strong>5 de septiembre</strong>.
-
-        </p>
+    </div>
 
 
-        <p>
+    <div class="scroll">
 
-            La idea es que este problema no se expanda
-            demasiado y, por eso, se está aplicando todo
-            el apoyo necesario para poder recuperar,
-            corregir y actualizar la página web.
+        DESLIZA PARA CONTINUAR
 
-        </p>
+    </div>
+
+</header>
 
 
-        <!-- QUÉ ESTAMOS HACIENDO -->
 
-        <div class="separator">
+<!-- =========================================================
+     INFORMACIÓN / NOTICIAS
+========================================================= -->
 
-            <div class="separator-text">
-                ¿QUÉ ESTAMOS HACIENDO ACTUALMENTE?
+<section>
+
+<div class="container">
+
+
+    <div class="section-label">
+
+        INFORMACIÓN
+
+    </div>
+
+
+    <h2 class="section-title">
+
+        Centro de Noticias
+
+    </h2>
+
+
+    <div class="news-grid">
+
+
+        <!-- VHS -->
+
+        <div
+            class="news-card"
+            id="vhsCard"
+            onclick="toggleVHS()"
+        >
+
+            <div class="news-icon">
+
+                📼
+
+            </div>
+
+
+            <div>
+
+                <h3>
+
+                    Sección VHS
+
+                </h3>
+
+
+                <p class="available">
+
+                    ● Disponible
+
+                </p>
+
             </div>
 
         </div>
 
 
-        <p>
 
-            Actualmente estamos trabajando en diferentes
-            partes de la página web, realizando pruebas,
-            corrigiendo errores y preparando nuevas
-            funciones.
+        <!-- PRÓXIMAMENTE -->
 
-        </p>
+        <div class="news-card disabled">
 
+            <div class="news-icon">
 
-        <ul class="work-list">
+                ❔
 
-
-            <li>
-                Quitamos el <strong>CONTADOR</strong>.
-            </li>
+            </div>
 
 
-            <li>
-                Estamos actualizando la parte de
-                <strong>SECCIÓN</strong>, que actualmente
-                es la parte más difícil de desarrollar.
-            </li>
+            <div>
+
+                <h3>
+
+                    Próximamente
+
+                </h3>
 
 
-            <li>
-                Estamos trabajando en la posibilidad de
-                <strong>cambiar de idioma</strong>.
-            </li>
+                <p>
 
+                    No disponible.
 
-            <li>
-                Estamos agregando más contenido dentro
-                de las secciones actuales.
-            </li>
+                </p>
 
-
-            <li>
-                Estamos preparando
-                <strong>MÁS SECCIONES</strong>.
-            </li>
-
-
-            <li>
-                Continuaremos con la parte visual actual,
-                pero agregando nuevas funciones y elementos.
-            </li>
-
-
-            <li>
-                Estamos trabajando nuevamente en la
-                sección de <strong>CALIFICACIÓN</strong>.
-            </li>
-
-
-            <li>
-                Estamos mejorando la
-                <strong>INTERFAZ</strong>.
-            </li>
-
-
-            <li>
-                Estamos buscando soluciones para los
-                <strong>PROBLEMAS CRÍTICOS Y LEVES</strong>
-                que presenta actualmente la página.
-            </li>
-
-
-        </ul>
-
-
-        <!-- FUTURO -->
-
-        <div class="separator">
-
-            <div class="separator-text">
-                LO QUE QUEREMOS AGREGAR
             </div>
 
         </div>
 
 
-        <p>
 
-            También queremos agregar más detalles,
-            colores y, sobre todo, más información y
-            contenido a esta página web para hacerla
-            mucho más interesante y permitir que quienes
-            la visiten puedan conocer más sobre
-            <strong>GROBLOX016</strong>.
+        <!-- PRÓXIMAMENTE -->
 
-        </p>
+        <div class="news-card disabled">
 
+            <div class="news-icon">
 
-        <ul class="work-list">
-
-
-            <li>
-                Mostrar más sobre el
-                <strong>futuro que queremos</strong>.
-            </li>
-
-
-            <li>
-                Presentar
-                <strong>proyectos a futuro</strong>.
-            </li>
-
-
-            <li>
-                Explicar correctamente algunas
-                <strong>polémicas que han sido mal explicadas</strong>.
-            </li>
-
-
-            <li>
-                Agregar información adicional sobre
-                diferentes etapas y proyectos.
-            </li>
-
-
-            <li>
-                Incorporar nuevos detalles visuales,
-                elementos interactivos e información.
-            </li>
-
-
-        </ul>
-
-
-        <!-- FINAL -->
-
-        <div class="final-message">
-
-
-            <p>
-
-                Finalmente, también queremos agregar
-                <strong>créditos</strong> y continuar
-                desarrollando todas las ideas que tenemos
-                para esta página.
-
-            </p>
-
-
-            <p>
-
-                Todo esto es parte del trabajo que estamos
-                realizando actualmente y, por ese motivo,
-                tomará unas semanas.
-
-            </p>
-
-
-            <p>
-
-                Hay muchas más cosas que queremos agregar
-                que actualmente se encuentran en etapa de
-                ideas, ya que estamos analizando de qué
-                manera podemos crearlas, qué podemos
-                aplicar y qué herramientas podemos utilizar
-                para llevarlas a cabo.
-
-            </p>
-
-
-            <p>
-
-                Eso es todo por ahora.
-                Sin nada más que comunicarles,
-                nos despedimos.
-
-            </p>
-
-
-            <div class="signature">
-
-                SE DESPIDE,
-
-                <span>
-                    MVN_12
-                </span>
+                ❔
 
             </div>
 
 
+            <div>
+
+                <h3>
+
+                    Próximamente
+
+                </h3>
+
+
+                <p>
+
+                    No disponible.
+
+                </p>
+
+            </div>
+
         </div>
 
 
-    </article>
+    </div>
 
 
-    <footer>
 
-        GROBLOX016 · ARCHIVO OFICIAL
+    <!-- =====================================================
+         VHS DENTRO DE LA MISMA SECCIÓN
+    ====================================================== -->
 
-        <br>
-
-        <span>
-            SISTEMA EN EXPERIMENTACIÓN · 2026
-        </span>
-
-    </footer>
+    <div
+        class="vhs-panel"
+        id="vhsPanel"
+    >
 
 
-</main>
+        <div class="vhs-content">
 
 
-</body>
-   </html>
+            <div class="vhs-header">
+
+                <div>
+
+                    <div class="section-label">
+
+                        ARCHIVO · 001
+
+                    </div>
+
+
+                    <div class="vhs-header-title">
+
+                        SECCIÓN VHS
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="close-vhs"
+                    onclick="closeVHS(event)"
+                >
+
+                    CERRAR
+
+                </button>
+
+            </div>
+
+
+
+            <p>
+
+                La sección VHS, son videos grabados
+                en Roblox, videojuego
+                <strong>"Unseen Liminality"</strong>,
+                con entidades de la película Backrooms,
+                entidades como
+                <strong>"Cap'n Clark"</strong>
+                y
+                <strong>"Still Life"</strong>.
+
+            </p>
+
+
+            <div class="vhs-divider"></div>
+
+
+            <p>
+
+                La idea de esta serie de videos comenzó
+                tras el lanzamiento de la película
+                Backrooms, y la vuelta de la comunidad
+                a las redes sociales.
+
+            </p>
+
+
+            <div class="vhs-divider"></div>
+
+
+            <p>
+
+                Esta serie comenzó el
+                <strong>MARTES, 23 DE JUNIO, 2026</strong>.
+
+                Con el primer VHS titulado como
+                <strong>"house.footage.1987.mp4"</strong>.
+
+            </p>
+
+
+            <div class="vhs-divider"></div>
+
+
+            <p>
+
+                Aunque toda esta serie de videos está
+                inspirada en los VHS de
+                <strong>Kane Pixels</strong>
+                y toda su gran e inspiradora serie
+                de videos VHS de las oficinas amarillas.
+
+            </p>
+
+
+            <div class="vhs-divider"></div>
+
+
+            <p>
+
+                Actualmente se está trabajando en los
+                vídeos ya que se encuentran en recta
+                final de estos vídeos en el
+                <strong>Canal de Groblox016</strong>.
+
+            </p>
+
+
+            <div class="vhs-divider"></div>
+
+
+            <div class="section-label">
+
+                INFORMACIÓN
+
+            </div>
+
+
+            <p>
+
+                La serie de VHS tendrá todos sus
+                capítulos disponibles después del
+                lanzamiento del último.
+
+            </p>
+
+
+            <br>
+
+
+            <p>
+
+                Quizás después de esta serie se suba
+                una nueva, pero en un universo paralelo
+                y con otra trama, que lo vemos muy poco
+                probable, pero tampoco está descartada
+                la idea.
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =========================================================
+     VIDEOS EN DESARROLLO
+========================================================= -->
+
+<section>
+
+<div class="container development">
+
+
+    <div class="section-label">
+
+        ARCHIVO · 002
+
+    </div>
+
+
+    <h2 class="section-title">
+
+        VÍDEOS EN DESARROLLO
+
+    </h2>
+
+
+    <div class="video-list">
+
+
+        <!-- VIDEO 1 -->
+
+        <div class="video-card">
+
+            <div class="video-name">
+
+                unknown_footage.mp4
+
+            </div>
+
+
+            <div class="video-overlay">
+
+                <div class="lock">
+                    
